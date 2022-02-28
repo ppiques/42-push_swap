@@ -14,12 +14,9 @@
 
 t_stack *ft_swap(t_stack *stack)
 {
-    t_list  *temp;
-
     if (stack->next == NULL || stack == NULL)
         return (NULL);
-    temp = stack->next;
-    
+	return (0);
 }
 
 push

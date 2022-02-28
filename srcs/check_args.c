@@ -59,9 +59,10 @@ int check_args(int argc, char const **argv)
     int j;
 
     i = 1;
+	j = 0;
     if (argc <= 1)
         return (-1);
-    while (argv[i] && argv[i + 1])
+    while (argv[i])
     {
         while (argv[i][j]) // segfault ici
         {

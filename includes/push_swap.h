@@ -20,14 +20,14 @@
 
 typedef struct s_stack
 {
-    int pos;
-    int value;
-    int target;
-    int dist;
-    int up;
+	int	nbr;
     struct s_stack *next;
 }   t_stack;
 
+//typedef struct s_list
+//{
+//	struct s_stack *first;
+//}	t_list;
 
 //  check_args.c
 int check_args(int argc, char const **argv);

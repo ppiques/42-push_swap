@@ -16,7 +16,7 @@ SRCS		= $(addprefix srcs/, check_args.c push_swap.c \
 OBJS		= $(SRCS:.c=.o)
 INCL		= $(addprefix -I , includes)
 CC			= gcc
-CFLAGS		= -Wall -Werror -Wextra -g
+CFLAGS		= -g
 RM			= rm -f
 
 %.o:		%.c
