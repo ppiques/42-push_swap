@@ -15,21 +15,52 @@
 # include <unistd.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include <limits.h>
 # include "utils.h"
 
 typedef struct s_stack
 {
 	int	nbr;
+	int	pos;
+	int	half;
+	int	dist;
+	int	target;
     struct s_stack *next;
 }   t_stack;
 
-//typedef struct s_list
-//{
-//	struct s_stack *first;
-//}	t_list;
+//	check_args.c
+int	check_args(int argc, char const **argv);
 
-//  check_args.c
-int check_args(int argc, char const **argv);
+//	setup.c
+t_stack	*create_stack(t_stack *stack, int argc, const char **argv);
+int	count_int(t_stack *stack);
+
+//	find_position.c
+t_stack	*find_position(t_stack *stack);
+
+//	operations.c
+t_stack *swap(t_stack *stack, char flag);
+t_stack *rotate(t_stack *stack, char flag);
+t_stack *reverse_rotate(t_stack *stack, char flag);
+t_stack **push(t_stack **stack, char flag);
+
+//	special_cases.c
+t_stack *three_numbers_case(t_stack *stack);
+void *five_numbers_case(t_stack **stack);
+
+// distance_calculator.c
+t_stack *set_half(t_stack *stack);
+int	half_calculator(int pos, int size);
+int	stack_size(t_stack *stack);
+
+// moves.c
+void	move(t_stack **stack);
+
+//	sorting.c
+t_stack	*choose_mover(t_stack *stack);
+
+//	freestack.c
+void	freestack(t_stack **stack);
 
 #endif

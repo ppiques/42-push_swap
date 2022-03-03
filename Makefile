@@ -3,38 +3,65 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ppiques <ppiques@students.42.fr>           +#+  +:+       +#+         #
+#    By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/02/16 12:46:13 by ppiques           #+#    #+#              #
-#    Updated: 2022/02/16 12:46:13 by ppiques          ###   ########.fr        #
+#    Created: 2022/03/02 23:00:53 by ppiques           #+#    #+#              #
+#    Updated: 2022/03/02 23:00:53 by ppiques          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= push_swap
-SRCS		= $(addprefix srcs/, check_args.c push_swap.c \
-			  $(addprefix utils/, ft_atoi.c ft_isdigit.c ft_strncmp.c))
-OBJS		= $(SRCS:.c=.o)
-INCL		= $(addprefix -I , includes)
-CC			= gcc
-CFLAGS		= -g
-RM			= rm -f
 
-%.o:		%.c
-			$(CC) $(CFLAGS) -c $< $(INCL) -o $@
+SRCS_PATH =	$(shell find srcs -type d) \
+				$(shell find srcs/utils -type d)
 
-all:		$(NAME)
+OBJ_DIR = $(BUILD)/obj
 
-$(NAME):	$(OBJS)
-			$(CC) $(CFLAGS) $^ -o $(NAME)
+INC_DIR = $(shell find includes -type d)
 
-bonus:		all
+BUILD = .objects
 
-clean:
-			$(RM) $(OBJS)
+vpath %.c $(foreach dir, $(SRCS_PATH), $(dir):)
 
-fclean:		clean
-			$(RM) $(NAME)
+SRCS = 	push_swap.c \
+check_args.c  find_position.c freestack.c \
+operations.c setup.c special_cases.c \
+ft_atoi.c ft_isdigit.c ft_strncmp.c
 
-re:			fclean all
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
-.PHONY:		all bonus clean fclean re
+CC = gcc
+
+CFLAGS =	-Wall -Werror -Wextra -g
+
+IFLAGS		=	$(foreach dir, $(INC_DIR), -I $(dir))
+
+all :
+	@make $(NAME)
+
+$(NAME) : $(OBJS)
+	@cc $(CFLAGS) $(OBJS) -o $(NAME)
+	@echo "Executable successfully created\n"
+
+$(OBJ_DIR)/%.o : %.c | $(BUILD)
+	@cc $(CFLAGS) -c $< $(IFLAGS) -o $@
+
+$(BUILD):
+	@mkdir $@ $(OBJ_DIR)
+	@echo "Object directory created\n"
+	@echo "Compiling..\n"
+
+clean :
+	@rm -rf $(BUILD)
+	@echo "Object directory deleted\n"
+
+fclean : clean
+	@rm -rf $(NAME)
+	@echo "Executable removed\n"
+
+bonus : fclean
+	@make all
+
+re : fclean all
+
+.PHONY:		bonus all clean fclean re

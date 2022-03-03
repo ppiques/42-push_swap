@@ -5,35 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/31 12:59:51 by ppiques           #+#    #+#             */
-/*   Updated: 2022/01/31 12:59:51 by ppiques          ###   ########.fr       */
+/*   Created: 2022/03/03 01:30:22 by ppiques           #+#    #+#             */
+/*   Updated: 2022/03/03 01:30:22 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//t_list	*list_init(t_list *liste)
-//{
-//	t_stack	*stack[2];
-
-//	*liste = malloc(sizeof(*liste));
-//	*stack[0] = malloc(sizeof(*stack));
-//	*stack[1] = malloc(sizeof(*stack));
-
-//	if (liste == NULL || stack[0] == NULL || stack[1] == NULL)
-//		exit();
-
-//	stack[0]->nbr = NULL;
-//	stack
-//}
-
 int main(int argc, char const **argv)
 {
 	t_stack	*stack[2];
+	int	i;
 
+	i = 0;
 	stack[0] = NULL;
 	stack[1] = NULL;
-    if (check_args(argc, argv) == -1)
-        return (0);
+	if (check_args(argc, argv) == -1)
+		return (0);
+	stack[0] = create_stack(stack[0], argc, argv);
+	if (count_int(stack[0]) == 3)
+		stack[0] = three_numbers_case(stack[0]);
+	if (count_int(stack[0]) == 5)
+		five_numbers_case(stack);
+	while (i++ < 3)
+	{
+		stack[0] = set_half(stack[0]);
+		stack[1] = set_half(stack[1]);
+		move(stack);
+	}
+	freestack(stack);
     return (0);
 }

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int check_limits(char const **argv)
+static int check_limits(char const **argv)
 {
     int i;
 
@@ -29,7 +29,7 @@ int check_limits(char const **argv)
     return (0);
 }
 
-int check_doubles(char const **argv)
+static int check_doubles(char const **argv)
 {
     int i;
     int j;
@@ -64,7 +64,7 @@ int check_args(int argc, char const **argv)
         return (-1);
     while (argv[i])
     {
-        while (argv[i][j]) // segfault ici
+        while (argv[i][j])
         {
             if (ft_isdigit(argv[i][j]) == 0)
             {
