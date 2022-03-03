@@ -12,6 +12,22 @@
 
 #include "push_swap.h"
 
+t_stack *restore_pos(t_stack *stack)
+{
+	t_stack *current;
+	int	i;
+
+	i = 1;
+	current = stack;
+	while (current != NULL)
+	{
+		current->pos = i;
+		i++;
+		current = current->next;
+	}
+	return (current);
+}
+
 t_stack *swap(t_stack *stack, char flag)
 {
 	t_stack *temp;
@@ -22,6 +38,7 @@ t_stack *swap(t_stack *stack, char flag)
 	stack->next = stack->next->next;
 	temp->next = stack;
 	stack = temp;
+	stack = restore_pos(stack);
 	if (flag == 'a')
 		write(1, "sa\n", 3);
 	if (flag == 'b')
@@ -46,6 +63,7 @@ t_stack *rotate(t_stack *stack, char flag)
 	}
 	last->next = stack;
 	temp->next = NULL;
+	stack = restore_pos(stack);
 	if (flag == 'a')
 		write(1, "ra\n", 3);
 	if (flag == 'b')
@@ -70,6 +88,7 @@ t_stack *reverse_rotate(t_stack *stack, char flag)
 	}
 	last->next = stack;
 	temp->next = NULL;
+	last = restore_pos(last);
 	if (flag == 'a')
 		write(1,"rra\n", 4);
 	if (flag == 'b')
@@ -97,5 +116,7 @@ t_stack **push(t_stack **stack, char flag)
 		stack[0] = temp;
 		write(1, "pb\n", 3);
 	}
+	stack[0] = restore_pos(stack[0]);
+	stack[1] = restore_pos(stack[1]);
 	return (stack);
 }

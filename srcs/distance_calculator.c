@@ -6,7 +6,7 @@
 /*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 01:29:35 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/03 02:30:13 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/03 17:53:54 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ t_stack *set_half(t_stack *stack)
 int	half_calculator(int pos, int size)
 {
 	if ((size / 2) >= pos)
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
 
 int	stack_size(t_stack *stack)

@@ -6,11 +6,20 @@
 /*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:51:17 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/03 01:26:58 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/03 18:41:00 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+t_stack **special_cases(t_stack **stack)
+{
+	if (count_int(stack[0]) == 3)
+		stack[0] = three_numbers_case(stack[0]);
+	if (count_int(stack[0]) == 5)
+		five_numbers_case(stack);
+	return (stack);
+}
 
 t_stack *three_numbers_case(t_stack *stack)
 {

@@ -6,11 +6,57 @@
 /*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 02:50:14 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/03 04:52:29 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/03 18:14:57 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	double_rotate(t_stack **stack, int *i, int *j)
+{
+	while (*i < 1 && *j < 1 && stack[1] != NULL)
+	{
+		stack[1] = reverse_rotate(stack[1], 'c');
+		stack[0] = reverse_rotate(stack[0], 'c');
+		(*i)++;
+		(*j)++;
+		write(1, "rrr\n", 4);
+	}
+	while (*i > 1 && *j > 1 && stack[1] != NULL)
+	{
+		stack[1] = rotate(stack[1], 'c');
+		stack[0] = rotate(stack[0], 'c');
+		(*i)--;
+		(*j)--;
+		write(1, "rr\n", 3);
+	}
+}
+
+void	operate_moves(t_stack **stack, int i, int j)
+{
+	while (i > 1)
+	{
+		stack[0] = rotate(stack[0], 0);
+		i--;
+	}
+	while (i < 1)
+	{
+		stack[0] = reverse_rotate(stack[0], 0);
+		i++;
+	}
+	while (j > 1 && stack[1] != NULL)
+	{
+		stack[1] = rotate(stack[1], 1);
+		j--;
+	}
+	while (j < 1 && stack[1] != NULL)
+	{
+		stack[1]= reverse_rotate(stack[1], 1);
+		j++;
+	}
+	return ;
+
+}
 
 void	move(t_stack **stack)
 {
@@ -26,16 +72,17 @@ void	move(t_stack **stack)
 		mover = choose_mover(stack[1]);
 	current[1] = mover;
 	current[0] = stack[0];
-	base = choose_base(current);
-	if (base->half == 1)
+	base = find_base(current);
+	if (base->half == 0)
 		i = base->pos;
 	else
 		i = base->pos - stack_size(stack[0]);
-	if (stack[1] != NULL && mover->half == 1)
+	if (stack[1] != NULL && mover->half == 0)
 		j = mover->pos;
 	else if (stack[1] != NULL)
 		j = mover->pos - stack_size(stack[1]);
-	good_moves(stack, i, j);
+	double_rotate(stack, &i, &j);
+	operate_moves(stack, i, j);
 	push(stack, 'a');
 	return ;
 }

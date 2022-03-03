@@ -46,11 +46,12 @@ t_stack *reverse_rotate(t_stack *stack, char flag);
 t_stack **push(t_stack **stack, char flag);
 
 //	special_cases.c
+t_stack **special_cases(t_stack **stack);
 t_stack *three_numbers_case(t_stack *stack);
-void *five_numbers_case(t_stack **stack);
+void five_numbers_case(t_stack **stack);
 
 // distance_calculator.c
-t_stack *set_half(t_stack *stack);
+t_stack	*set_half(t_stack *stack);
 int	half_calculator(int pos, int size);
 int	stack_size(t_stack *stack);
 
@@ -59,6 +60,7 @@ void	move(t_stack **stack);
 
 //	sorting.c
 t_stack	*choose_mover(t_stack *stack);
+t_stack	*find_base(t_stack **stack);
 
 //	freestack.c
 void	freestack(t_stack **stack);
