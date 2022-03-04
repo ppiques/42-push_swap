@@ -23,14 +23,15 @@ int main(int argc, char const **argv)
 	if (check_args(argc, argv) == -1)
 		return (0);
 	stack[0] = create_stack(stack[0], argc, argv);
-	*stack = special_cases(stack);
-	while (i < 3)
-	{
-		stack[0] = set_half(stack[0]);
-		stack[1] = set_half(stack[1]);
-		move(stack);
-		i++;
-	}
+	special_cases(stack);
+	if (count_int(stack[0]) == 5)
+		while (i < 3)
+		{
+			stack[0] = set_half(stack[0]);
+			stack[1] = set_half(stack[1]);
+			move(stack);
+			i++;
+		}
 	freestack(stack);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 01:29:35 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/03 17:53:54 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/04 18:29:21 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,17 @@ t_stack *set_half(t_stack *stack)
 	t_stack *current;
 
 	size = stack_size(stack);
+	printf("size=%d\n", size);
 	current = stack;
 	while (current != NULL)
 	{
 		current->half = half_calculator(current->pos, size);
+		printf("half=%d\n", current->half);
 		current = current->next;
 	}
-	return (current);
+	if (stack != NULL)
+		printf("final half=%d\n", stack->half);
+	return (stack);
 }
 
 int	half_calculator(int pos, int size)

@@ -24,7 +24,7 @@ BUILD = .objects
 vpath %.c $(foreach dir, $(SRCS_PATH), $(dir):)
 
 SRCS = 	push_swap.c \
-check_args.c  find_position.c freestack.c \
+check_args.c  find_target.c freestack.c \
 operations.c setup.c special_cases.c \
 distance_calculator.c moves.c sorting.c \
 ft_atoi.c ft_isdigit.c ft_strncmp.c

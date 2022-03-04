@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_position.c                                    :+:      :+:    :+:   */
+/*   find_target.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:43:17 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/03 01:13:13 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/04 18:37:45 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	find_last_assigned_target(t_stack*stack, int max, int last_assigned)
 	return (last_assigned);
 }
 
-t_stack	*find_position(t_stack *stack)
+t_stack	*find_target(t_stack *stack)
 {
 	int	i;
 	int	last_assigned;

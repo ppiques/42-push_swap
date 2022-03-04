@@ -6,7 +6,7 @@
 /*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 02:50:14 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/03 18:14:57 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/04 18:23:37 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,27 @@ void	operate_moves(t_stack **stack, int i, int j)
 
 }
 
+t_stack	*choose_mover(t_stack *stack)
+{
+	t_stack	*current;
+	t_stack	*mover;
+
+	current = stack;
+	mover = stack;
+	while (current != NULL)
+	{
+		if (current->dist < mover->dist)
+			mover = current;
+		current = current->next;
+	}
+	return (mover);
+}
+
 void	move(t_stack **stack)
 {
-	t_stack	*mover;
-	t_stack	*base;
 	t_stack	*current[2];
+	t_stack	*base;
+	t_stack	*mover;
 	int		i;
 	int		j;
 
@@ -73,6 +89,7 @@ void	move(t_stack **stack)
 	current[1] = mover;
 	current[0] = stack[0];
 	base = find_base(current);
+	printf("base->half = %d\n", base->half);
 	if (base->half == 0)
 		i = base->pos;
 	else

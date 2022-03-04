@@ -6,7 +6,7 @@
 /*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 15:24:42 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/02 23:29:18 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/04 18:38:31 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ t_stack	*create_stack(t_stack *stack, int argc, char const **argv)
 			stack->pos = i;
 		}
 	}
-	stack = find_position(stack);
+	stack = find_target(stack);
 	return (stack);
 }

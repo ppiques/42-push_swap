@@ -36,8 +36,8 @@ int	check_args(int argc, char const **argv);
 t_stack	*create_stack(t_stack *stack, int argc, const char **argv);
 int	count_int(t_stack *stack);
 
-//	find_position.c
-t_stack	*find_position(t_stack *stack);
+//	find_target.c
+t_stack	*find_target(t_stack *stack);
 
 //	operations.c
 t_stack *swap(t_stack *stack, char flag);
@@ -46,7 +46,7 @@ t_stack *reverse_rotate(t_stack *stack, char flag);
 t_stack **push(t_stack **stack, char flag);
 
 //	special_cases.c
-t_stack **special_cases(t_stack **stack);
+void	special_cases(t_stack **stack);
 t_stack *three_numbers_case(t_stack *stack);
 void five_numbers_case(t_stack **stack);
 
@@ -57,9 +57,9 @@ int	stack_size(t_stack *stack);
 
 // moves.c
 void	move(t_stack **stack);
+t_stack	*choose_mover(t_stack *stack);
 
 //	sorting.c
-t_stack	*choose_mover(t_stack *stack);
 t_stack	*find_base(t_stack **stack);
 
 //	freestack.c

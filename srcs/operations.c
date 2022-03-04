@@ -38,7 +38,7 @@ t_stack *swap(t_stack *stack, char flag)
 	stack->next = stack->next->next;
 	temp->next = stack;
 	stack = temp;
-	stack = restore_pos(stack);
+	// stack = restore_pos(stack);
 	if (flag == 'a')
 		write(1, "sa\n", 3);
 	if (flag == 'b')
@@ -63,7 +63,7 @@ t_stack *rotate(t_stack *stack, char flag)
 	}
 	last->next = stack;
 	temp->next = NULL;
-	stack = restore_pos(stack);
+	// stack = restore_pos(stack);
 	if (flag == 'a')
 		write(1, "ra\n", 3);
 	if (flag == 'b')
@@ -88,7 +88,7 @@ t_stack *reverse_rotate(t_stack *stack, char flag)
 	}
 	last->next = stack;
 	temp->next = NULL;
-	last = restore_pos(last);
+	// last = restore_pos(last);
 	if (flag == 'a')
 		write(1,"rra\n", 4);
 	if (flag == 'b')
