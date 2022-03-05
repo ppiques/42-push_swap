@@ -6,7 +6,7 @@
 /*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 02:50:14 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/04 18:23:37 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/05 18:36:27 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ void	move(t_stack **stack)
 	current[1] = mover;
 	current[0] = stack[0];
 	base = find_base(current);
-	printf("base->half = %d\n", base->half);
 	if (base->half == 0)
 		i = base->pos;
 	else

@@ -25,7 +25,7 @@ t_stack *restore_pos(t_stack *stack)
 		i++;
 		current = current->next;
 	}
-	return (current);
+	return (stack);
 }
 
 t_stack *swap(t_stack *stack, char flag)
@@ -38,7 +38,7 @@ t_stack *swap(t_stack *stack, char flag)
 	stack->next = stack->next->next;
 	temp->next = stack;
 	stack = temp;
-	// stack = restore_pos(stack);
+	stack = restore_pos(stack);
 	if (flag == 'a')
 		write(1, "sa\n", 3);
 	if (flag == 'b')
@@ -55,19 +55,23 @@ t_stack *rotate(t_stack *stack, char flag)
 	last = stack;
 	if (stack->next == NULL)
 		return (stack);
+	stack = stack->next;
 	while (last->next != NULL)
-	{
-		if (last->next->next == NULL)
-			temp = last;
 		last = last->next;
-	}
-	last->next = stack;
-	temp->next = NULL;
-	// stack = restore_pos(stack);
+	last->next = temp;
+	last->next->next = NULL;
+	temp = stack;
+	temp = NULL;
+	stack = restore_pos(stack);
 	if (flag == 'a')
 		write(1, "ra\n", 3);
 	if (flag == 'b')
 		write(1, "rb\n", 3);
+//	while (stack != NULL)
+//	{
+//		printf("stack->target = %d\n", stack->target);
+//		stack = stack->next;
+//	}
 	return (stack);
 }
 
@@ -96,7 +100,7 @@ t_stack *reverse_rotate(t_stack *stack, char flag)
 	return (last);
 }
 
-t_stack **push(t_stack **stack, char flag)
+void	push(t_stack **stack, char flag)
 {
 	t_stack *temp;
 
@@ -108,7 +112,7 @@ t_stack **push(t_stack **stack, char flag)
 		stack[1] = temp;
 		write(1, "pa\n", 3);
 	}
-	if (flag == 'b' && stack[1] != NULL)
+	if (flag == 'b' && stack[0] != NULL)
 	{
 		temp = stack[0]->next;
 		stack[0]->next = stack[1];
@@ -118,5 +122,5 @@ t_stack **push(t_stack **stack, char flag)
 	}
 	stack[0] = restore_pos(stack[0]);
 	stack[1] = restore_pos(stack[1]);
-	return (stack);
+	return ;
 }

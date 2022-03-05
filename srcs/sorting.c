@@ -6,7 +6,7 @@
 /*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 02:52:38 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/04 18:23:40 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/05 16:29:56 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,5 @@ t_stack	*find_base(t_stack **stack)
 			i++;
 		}
 	}
-	printf("find_base half = %d\n", current[0]->half);
 	return (current[0]);
 }

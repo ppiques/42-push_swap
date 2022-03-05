@@ -15,8 +15,8 @@
 # include <limits.h>
 # include <stdio.h>
 
-long int    ft_atoi(const char *str);
-int ft_isdigit(int c);
-int ft_strncmp(const char *s1, const char *s2, size_t n);
+long int	ft_atoi(const char *str);
+int	ft_isdigit(int c);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 15:24:42 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/04 18:38:31 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/05 18:07:03 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	count_int(t_stack *stack)
 }
 
 
-t_stack	*stack_insert(t_stack *stack, const char *nbr)
+t_stack	*stack_insert(t_stack *stack, char const *nbr)
 {
 	int nb;
 	t_stack *new;

@@ -26,7 +26,7 @@ typedef struct s_stack
 	int	half;
 	int	dist;
 	int	target;
-    struct s_stack *next;
+	struct s_stack *next;
 }   t_stack;
 
 //	check_args.c
@@ -40,10 +40,10 @@ int	count_int(t_stack *stack);
 t_stack	*find_target(t_stack *stack);
 
 //	operations.c
-t_stack *swap(t_stack *stack, char flag);
-t_stack *rotate(t_stack *stack, char flag);
-t_stack *reverse_rotate(t_stack *stack, char flag);
-t_stack **push(t_stack **stack, char flag);
+t_stack	*swap(t_stack *stack, char flag);
+t_stack	*rotate(t_stack *stack, char flag);
+t_stack	*reverse_rotate(t_stack *stack, char flag);
+void	push(t_stack **stack, char flag);
 
 //	special_cases.c
 void	special_cases(t_stack **stack);
