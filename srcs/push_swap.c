@@ -25,6 +25,7 @@ int main(int argc, char const **argv)
 	stack[0] = create_stack(stack[0], argc, argv);
 	if (count_int(stack[0]) == 3 || count_int(stack[0]) == 5)
 		special_cases(stack);
+	sort_stacks(stack);
 	freestack(stack);
 	return (0);
 }

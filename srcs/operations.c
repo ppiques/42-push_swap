@@ -67,11 +67,6 @@ t_stack *rotate(t_stack *stack, char flag)
 		write(1, "ra\n", 3);
 	if (flag == 'b')
 		write(1, "rb\n", 3);
-//	while (stack != NULL)
-//	{
-//		printf("stack->target = %d\n", stack->target);
-//		stack = stack->next;
-//	}
 	return (stack);
 }
 
@@ -92,7 +87,7 @@ t_stack *reverse_rotate(t_stack *stack, char flag)
 	}
 	last->next = stack;
 	temp->next = NULL;
-	// last = restore_pos(last);
+	last = restore_pos(last);
 	if (flag == 'a')
 		write(1,"rra\n", 4);
 	if (flag == 'b')

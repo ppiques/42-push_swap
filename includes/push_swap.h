@@ -49,18 +49,24 @@ void	push(t_stack **stack, char flag);
 void	special_cases(t_stack **stack);
 t_stack *three_numbers_case(t_stack *stack);
 void five_numbers_case(t_stack **stack);
+t_stack	*final_sort(t_stack *stack);
 
-// distance_calculator.c
+//	half_calculator.c
 t_stack	*set_half(t_stack *stack);
 int	half_calculator(int pos, int size);
 int	stack_size(t_stack *stack);
 
-// moves.c
+//	moves.c
 void	move(t_stack **stack);
 t_stack	*choose_mover(t_stack *stack);
 
-//	sorting.c
+//	find_base.c
 t_stack	*find_base(t_stack **stack);
+
+//	sorting.c
+void	sort_stacks(t_stack **stack);
+int	distance_calculator(t_stack **stack, int sizeA, int sizeB);
+int	stack_optimizer(t_stack *baseA, t_stack *stackB, int sizeA, int sizeB);
 
 //	freestack.c
 void	freestack(t_stack **stack);

@@ -6,7 +6,7 @@
 /*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:43:17 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/04 18:37:45 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/07 18:20:10 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,5 @@ t_stack	*find_target(t_stack *stack)
 		current = stack;
 		last_assigned = find_last_assigned_target(stack, max, last_assigned);
 	}
-	return (current);
+	return (stack);
 }

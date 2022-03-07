@@ -6,67 +6,121 @@
 /*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 02:52:38 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/05 16:29:56 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/07 18:23:31 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*min_finder(t_stack **stack)
+void	push_to_b(t_stack **stack)
 {
-	t_stack	*current[2];
-	t_stack	*min;
+	int	i;
+	t_stack	*current;
+	t_stack	*last;
 
-	current[0] = stack[0];
-	min = stack[0];
-	while (current[0] != NULL)
+	i = stack_size(stack[0]);
+	printf("stack_size0 = %d\n", i);
+	while (stack_size(stack[0]) > 1)
 	{
-		if (current[0]->target < min->target)
-			min = current[0];
-		current[0] = current[0]->next;
+		i = 1;
+		current = stack[0];
+		while (current->next != NULL)
+		{
+			if (current->target < current->next->target)
+				i++;
+			current = current->next;
+		}
+		if ( i == stack_size(stack[0]))
+			break ;
+		last = current;
+		if (stack[0]->target > last->target)
+			stack[0] = rotate(stack[0], 0);
+		else
+			push(stack, 'b');
 	}
-	return (min);
+	return ;
 }
 
-t_stack	*max_finder(t_stack **stack)
+void	set_distance(t_stack **stack)
 {
 	t_stack	*current[2];
-	t_stack	*max;
 
 	current[0] = stack[0];
-	max = stack[0];
-	while (current[0] != NULL)
+	current[1] = stack[1];
+	while (current[1] != NULL)
 	{
-		if (current[0]->target > max->target)
-			max = current[0];
-		current[0] = current[0]->next;
+		current[1]->dist = distance_calculator(current, \
+		stack_size(stack[0]), stack_size(stack[1]));
+		current[1] = current[1]->next;
 	}
-	return (max);
+	return ;
 }
 
-t_stack	*find_base(t_stack **stack)
+int	distance_calculator(t_stack **stack, int sizeA, int sizeB)
 {
-	t_stack	*current[2];
-	t_stack	*min;
-	t_stack	*max;
+	int	i;
+	int	j;
+	t_stack *baseA;
+
+	baseA = find_base(stack);
+	i = stack_optimizer(baseA, stack[1], sizeA, sizeB);
+	if (stack[1]->half == 0)
+	{
+		if (baseA->half == 0)
+			j = stack[1]->pos - 1 + baseA->pos - 1 - i;
+		else
+			j = stack[1]->pos - 1 + sizeA - baseA->pos + 1;
+	}
+	else
+	{
+		if (baseA->half == 0)
+			j = sizeB - stack[1]->pos + 1 + baseA->pos - 1;
+		else
+			j = (sizeB - stack[1]->pos + 1) + (sizeA - baseA->pos + 1) - i;
+	}
+	return (j);
+}
+
+int	stack_optimizer(t_stack *baseA, t_stack *stackB, int sizeA, int sizeB)
+{
 	int	i;
 
-	i = 1;
-	min = min_finder(stack);
-	max = max_finder(stack);
-	current[0] = stack[0];
-	if (stack[1] == NULL)
-		return (min);
-	while (current[0]->target != (stack[1]->target + i))
+	i = 0;
+	if (stackB->half == 0)
 	{
-		current[0] = current[0]->next;
-		if (current[0] == NULL)
+		if (baseA->half == 0)
 		{
-			if (i > max->target)
-				return (min);
-			current[0] = stack[0];
-			i++;
+			if (stackB->pos <= baseA->pos)
+				i = stackB->pos - 1;
+			else
+				i = baseA->pos - 1;
 		}
 	}
-	return (current[0]);
+	else
+	{
+		if (baseA->half == 1)
+		{
+			if ((sizeB - stackB->pos + 1) <= (sizeA - baseA->pos + 1))
+				i = (sizeB - stackB->pos + 1);
+			else
+				i = (sizeA - baseA->pos + 1);
+		}
+	}
+	return (i);
+}
+
+void	sort_stacks(t_stack **stack)
+{
+	printf("a\n");
+	push_to_b(stack);
+	printf("b\n");
+	while(stack[1] != NULL)
+	{
+		stack[0] = set_half(stack[0]);
+		stack[1] = set_half(stack[1]);
+		set_distance(stack);
+		move(stack);
+	}
+	stack[0] = set_half(stack[0]);
+	move(stack);
 }

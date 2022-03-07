@@ -6,7 +6,7 @@
 /*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:51:17 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/05 18:55:22 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/07 18:01:03 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,7 @@ void	special_cases(t_stack **stack)
 			move(stack);
 			i++;
 		}
-		if (stack[0]->target > stack[0]->next->target)
-		{
-			swap(stack[0], 'a');
-			stack[0] = rotate(stack[0], 'a');
-			stack[0] = rotate(stack[0], 'a');
-		}
-		else if (stack[0]->target < stack[0]->next->target)
-		{
-			stack[0] = rotate(stack[0], 'a');
-			stack[0] = rotate(stack[0], 'a');
-		}
+		stack[0] = final_sort(stack[0]);
 	}
 }
 
@@ -66,8 +56,6 @@ void	five_numbers_case(t_stack **stack)
 	i = 0;
 	while (i < 2)
 	{
-		//printf("next->target = %d\n", stack[0]->next->target);
-		//printf("next->nbr = %d\n", stack[0]->next->nbr);
 		if (stack[0]->target < 4)
 			stack[0] = rotate(stack[0], 'a');
 		else
@@ -77,4 +65,20 @@ void	five_numbers_case(t_stack **stack)
 		}
 	}
 	stack[0] = three_numbers_case(stack[0]);
+}
+
+t_stack	*final_sort(t_stack *stack)
+{
+	if (stack->nbr > stack->next->nbr)
+	{
+		swap(stack, 'a');
+		stack = rotate(stack, 'a');
+		stack = rotate(stack, 'a');
+	}
+	else if (stack->nbr < stack->next->nbr)
+	{
+		stack = rotate(stack, 'a');
+		stack = rotate(stack, 'a');
+	}
+	return (stack);
 }

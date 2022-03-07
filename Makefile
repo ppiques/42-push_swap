@@ -25,8 +25,8 @@ vpath %.c $(foreach dir, $(SRCS_PATH), $(dir):)
 
 SRCS = 	push_swap.c \
 check_args.c  find_target.c freestack.c \
-operations.c setup.c special_cases.c \
-distance_calculator.c moves.c sorting.c \
+operations.c setup.c special_cases.c find_base.c \
+half_calculator.c moves.c sorting.c \
 ft_atoi.c ft_isdigit.c ft_strncmp.c
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
