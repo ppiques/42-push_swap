@@ -15,17 +15,21 @@
 int main(int argc, char const **argv)
 {
 	t_stack	*stack[2];
-	int	i;
 
-	i = 0;
 	stack[0] = NULL;
 	stack[1] = NULL;
 	if (check_args(argc, argv) == -1)
 		return (0);
 	stack[0] = create_stack(stack[0], argc, argv);
+	if (check_order(stack[0]) == 1)
+	{
+		freestack(stack);
+		return (0);
+	}
 	if (count_int(stack[0]) == 3 || count_int(stack[0]) == 5)
 		special_cases(stack);
-	sort_stacks(stack);
+	else
+		sort_stacks(stack);
 	freestack(stack);
 	return (0);
 }

@@ -82,3 +82,25 @@ int check_args(int argc, char const **argv)
         return (-1);
     return (0);
 }
+
+int check_order(t_stack *stack)
+{
+    int temp;
+    t_stack *current;
+
+    current = stack;
+    temp = 0;
+    if (current != NULL)
+    {
+        temp = current->nbr;
+        current = current->next;
+    }
+    while (current != NULL)
+    {
+        if (temp > current->nbr)
+            return (0);
+        temp = current->nbr;
+        current = current->next;
+    }
+    return (1);
+}

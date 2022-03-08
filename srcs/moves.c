@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppiques <ppiques@students.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 02:50:14 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/05 18:36:27 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/08 16:50:19 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,22 @@ void	operate_moves(t_stack **stack, int i, int j)
 {
 	while (i > 1)
 	{
-		stack[0] = rotate(stack[0], 0);
+		stack[0] = rotate(stack[0], 'a');
 		i--;
 	}
 	while (i < 1)
 	{
-		stack[0] = reverse_rotate(stack[0], 0);
+		stack[0] = reverse_rotate(stack[0], 'a');
 		i++;
 	}
 	while (j > 1 && stack[1] != NULL)
 	{
-		stack[1] = rotate(stack[1], 1);
+		stack[1] = rotate(stack[1], 'b');
 		j--;
 	}
 	while (j < 1 && stack[1] != NULL)
 	{
-		stack[1]= reverse_rotate(stack[1], 1);
+		stack[1]= reverse_rotate(stack[1], 'b');
 		j++;
 	}
 	return ;

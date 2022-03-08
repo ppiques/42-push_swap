@@ -31,6 +31,7 @@ typedef struct s_stack
 
 //	check_args.c
 int	check_args(int argc, char const **argv);
+int check_order(t_stack *stack);
 
 //	setup.c
 t_stack	*create_stack(t_stack *stack, int argc, const char **argv);

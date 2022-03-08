@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppiques <ppiques@students.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 02:52:38 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/07 18:23:31 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/08 16:54:53 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	push_to_b(t_stack **stack)
 	t_stack	*current;
 	t_stack	*last;
 
-	i = stack_size(stack[0]);
-	printf("stack_size0 = %d\n", i);
 	while (stack_size(stack[0]) > 1)
 	{
 		i = 1;
@@ -34,7 +32,7 @@ void	push_to_b(t_stack **stack)
 			break ;
 		last = current;
 		if (stack[0]->target > last->target)
-			stack[0] = rotate(stack[0], 0);
+			stack[0] = rotate(stack[0], 'a');
 		else
 			push(stack, 'b');
 	}
@@ -111,9 +109,7 @@ int	stack_optimizer(t_stack *baseA, t_stack *stackB, int sizeA, int sizeB)
 
 void	sort_stacks(t_stack **stack)
 {
-	printf("a\n");
 	push_to_b(stack);
-	printf("b\n");
 	while(stack[1] != NULL)
 	{
 		stack[0] = set_half(stack[0]);

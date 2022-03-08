@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_target.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ppiques <ppiques@students.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 14:43:17 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/07 18:20:10 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/08 16:42:35 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	set_target_one(t_stack *stack)
 	last_assigned = current->nbr;
 	while (current != NULL)
 	{
-		if (last_assigned >= current->nbr)
+		if (current->nbr < last_assigned)
 		{
 			last_assigned = current->nbr;
 			current->target = 1;
@@ -73,6 +73,7 @@ t_stack	*find_target(t_stack *stack)
 
 	i = 1;
 	current = stack;
+	current->target = 1;
 	last_assigned = current->nbr;
 	max = current->nbr;
 	last_assigned = set_target_one(stack);
