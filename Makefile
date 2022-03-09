@@ -33,7 +33,7 @@ OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
 CC = gcc
 
-CFLAGS =	-Wall -Werror -Wextra -g
+CFLAGS =	-Wall -Werror -Wextra
 
 IFLAGS		=	$(foreach dir, $(INC_DIR), -I $(dir))
 
