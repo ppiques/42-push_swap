@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_base.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppiques <ppiques@students.42.fr>           +#+  +:+       +#+        */
+/*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 16:23:46 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/08 16:44:58 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/10 15:51:39 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_stack	*find_base(t_stack **stack)
 	t_stack	*current[2];
 	t_stack	*min;
 	t_stack	*max;
-	int	i;
+	int		i;
 
 	i = 1;
 	current[0] = stack[0];

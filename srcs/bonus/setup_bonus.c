@@ -12,24 +12,25 @@
 
 #include "push_swap_bonus.h"
 
-int	count_int(t_stack *stack)
+int	stack_size(t_stack *stack)
 {
-	int	i;
+	int		i;
+	t_stack	*current;
 
 	i = 0;
-	while (stack != NULL)
+	current = stack;
+	while (current != NULL)
 	{
-		stack = stack->next;
+		current = current->next;
 		i++;
 	}
 	return (i);
 }
 
-
 t_stack	*stack_insert(t_stack *stack, char const *nbr)
 {
-	int nb;
-	t_stack *new;
+	int		nb;
+	t_stack	*new;
 
 	nb = ft_atoi(nbr);
 	new = malloc(sizeof(*new));

@@ -12,37 +12,37 @@
 
 #include "push_swap_bonus.h"
 
-void    bonus_move(char*str, t_stack **stack, t_stack **stackA, t_stack **stackB)
+void	bonus_move(char*str, t_stack **stack, t_stack **A, t_stack **B)
 {
-    if (ft_strncmp(str, "sa", 3) == 0)
-        bonus_swap(stackA);
-    if (ft_strncmp(str, "sb", 3) == 0)
-        bonus_swap(stackB);
-    if (ft_strncmp(str, "ss", 3) == 0)
-    {
-        bonus_swap(stackA);
-        bonus_swap(stackB)
-    }
+	if (ft_strncmp(str, "sa", 3) == 0)
+		bonus_swap(A);
+	if (ft_strncmp(str, "sb", 3) == 0)
+		bonus_swap(B);
+	if (ft_strncmp(str, "ss", 3) == 0)
+	{
+		bonus_swap(A);
+		bonus_swap(B);
+	}
 	if (ft_strncmp(str, "ra", 2) == 0)
-		bonus_rotate(stackA);
+		bonus_rotate(A);
 	if (ft_strncmp(str, "rb", 2) == 0)
-		bonus_rotate(stackB);
+		bonus_rotate(B);
 	if (ft_strncmp(str, "rr", 3) == 0)
 	{
-		bonus_rotate(stackA);
-		bonus_rotate(stackB);
+		bonus_rotate(A);
+		bonus_rotate(B);
 	}
 	if (ft_strncmp(str, "pa", 2) == 0)
 		bonus_push(stack, 'a');
 	if (ft_strncmp(str, "pb", 2) == 0)
 		bonus_push(stack, 'b');
 	else
-		bonus_reverse_rotater(str, stackA, stackB);
+		bonus_reverse_rotater(str, A, B);
 }
 
-void    bonus_reverse_rotater(char *str, t_stack **stackA, t_stack **stackB)
+void	bonus_reverse_rotater(char *str, t_stack **stackA, t_stack **stackB)
 {
-    if (ft_strncmp(str, "rra", 3) == 0)
+	if (ft_strncmp(str, "rra", 3) == 0)
 		bonus_reverse_rotate(stackA);
 	if (ft_strncmp(str, "rrb", 3) == 0)
 		bonus_reverse_rotate(stackB);
@@ -51,7 +51,7 @@ void    bonus_reverse_rotater(char *str, t_stack **stackA, t_stack **stackB)
 		bonus_reverse_rotate(stackA);
 		bonus_reverse_rotate(stackB);
 	}
-    return ;
+	return ;
 }
 
 void	checker(t_stack **stack)

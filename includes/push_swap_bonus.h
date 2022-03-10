@@ -26,54 +26,58 @@
 
 typedef struct s_stack
 {
-	int	nbr;
-	int	pos;
-	int	half;
-	int	dist;
-	int	target;
-	struct s_stack *next;
-}   t_stack;
-
+	int				nbr;
+	int				pos;
+	int				half;
+	int				dist;
+	int				target;
+	struct s_stack	*next;
+}	t_stack;
 
 // get_next_line.c
-int		get_next_line(int fd, char **line);
-char	*get_save(char *save);
-int		error_check(int fd, char *buff, char **line);
+int			get_next_line(int fd, char **line);
+char		*get_save(char *save);
+int			error_check(int fd, char *buff, char **line);
 
 //get_next_line_utils.c
-int		newline_end(char *str);
-char	*get_line(char *str);
-char	*ft_strjoin(char *s1, char const *s2);
-void	*ft_memmove(void *dst, const void *src, size_t len);
-size_t	ft_strlen(const char *str);
+int			newline_end(char *str);
+char		*get_line(char *str);
+char		*ft_strjoin(char *s1, char const *s2);
+void		*ft_memmove(void *dst, const void *src, size_t len);
+size_t		ft_strlen(const char *str);
 
 // check_args_bonus.c
-int check_args(int argc, char const **argv);
+int			check_args(char const **argv);
 
 // find_target_bonus.c
-int	set_target_one(t_stack *stack);
-int	target_max(t_stack *stack);
-int	find_last_assigned_target(t_stack*stack, int max, int last_assigned);
-t_stack	*find_target(t_stack *stack);
+int			set_target_one(t_stack *stack);
+int			target_max(t_stack *stack);
+int			find_last_assigned_target(t_stack *stack, int max, int l_a);
+t_stack		*find_target(t_stack *stack);
 
 // freestack_bonus.c
-void	freestack(t_stack **stack);
+void		freestack(t_stack **stack);
 
 // moves_bonus.c
-void    bonus_move(char*str, t_stack **stack, t_stack **stackA, t_stack **stackB);
-void    bonus_reverse_rotater(char *str, t_stack **stackA, t_stack **stackB);
-void	checker(t_stack **stack);
+void		bonus_move(char*str, t_stack **stack, t_stack **A, t_stack **B);
+void		bonus_reverse_rotater(char *str, t_stack **A, t_stack **B);
+void		checker(t_stack **stack);
 
 // operations_bonus.c
-t_stack *restore_pos(t_stack **stack);
-void	bonus_swap(t_stack **stack);
-void	bonus_rotate(t_stack **stack);
-void	bonus_reverse_rotate(t_stack **stack);
-void	bonus_push(t_stack **stack);
+t_stack		*restore_pos(t_stack *stack);
+void		bonus_swap(t_stack **stack);
+void		bonus_rotate(t_stack **stack);
+void		bonus_reverse_rotate(t_stack **stack);
+void		bonus_push(t_stack **stack, char flag);
 
 // setup_bonus.c
-int	count_int(t_stack *stack);
-t_stack	*stack_insert(t_stack *stack, char const *nbr);
-t_stack	*create_stack(t_stack *stack, int argc, char const **argv);
+int			stack_size(t_stack *stack);
+t_stack		*stack_insert(t_stack *stack, char const *nbr);
+t_stack		*create_stack(t_stack *stack, int argc, char const **argv);
+
+// utils_bonus.c
+long int	ft_atoi(const char *str);
+int			ft_isdigit(int c);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

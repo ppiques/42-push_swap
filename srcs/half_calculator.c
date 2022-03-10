@@ -6,16 +6,16 @@
 /*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 01:29:35 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/07 17:19:58 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/10 16:35:49 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack *set_half(t_stack *stack)
+t_stack	*set_half(t_stack *stack)
 {
-	int size;
-	t_stack *current;
+	int		size;
+	t_stack	*current;
 
 	size = stack_size(stack);
 	current = stack;
@@ -36,8 +36,8 @@ int	half_calculator(int pos, int size)
 
 int	stack_size(t_stack *stack)
 {
-	int i;
-	t_stack *current;
+	int		i;
+	t_stack	*current;
 
 	i = 0;
 	current = stack;

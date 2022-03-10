@@ -14,9 +14,9 @@
 
 void	freestack(t_stack **stack)
 {
-	t_stack *current[2];
+	t_stack	*current[2];
 
-	current[0]= stack[0];
+	current[0] = stack[0];
 	current[1] = stack[1];
 	while (current[0] != NULL)
 	{

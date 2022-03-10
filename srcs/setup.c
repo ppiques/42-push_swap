@@ -3,33 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppiques <ppiques@students.42.fr>           +#+  +:+       +#+        */
+/*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 15:24:42 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/08 15:26:57 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/10 16:37:13 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	count_int(t_stack *stack)
-{
-	int	i;
-
-	i = 0;
-	while (stack != NULL)
-	{
-		stack = stack->next;
-		i++;
-	}
-	return (i);
-}
-
-
 t_stack	*stack_insert(t_stack *stack, char const *nbr)
 {
-	int nb;
-	t_stack *new;
+	int		nb;
+	t_stack	*new;
 
 	nb = ft_atoi(nbr);
 	new = malloc(sizeof(*new));

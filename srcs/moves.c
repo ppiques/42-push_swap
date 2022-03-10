@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppiques <ppiques@students.42.fr>           +#+  +:+       +#+        */
+/*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 02:50:14 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/08 16:50:19 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/10 15:53:23 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,10 @@ void	operate_moves(t_stack **stack, int i, int j)
 	}
 	while (j < 1 && stack[1] != NULL)
 	{
-		stack[1]= reverse_rotate(stack[1], 'b');
+		stack[1] = reverse_rotate(stack[1], 'b');
 		j++;
 	}
 	return ;
-
 }
 
 t_stack	*choose_mover(t_stack *stack)

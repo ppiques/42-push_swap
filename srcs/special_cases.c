@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   special_cases.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppiques <ppiques@students.42.fr>           +#+  +:+       +#+        */
+/*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:51:17 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/08 16:52:54 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/10 16:39:04 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	special_cases(t_stack **stack)
 	int	i;
 
 	i = 0;
-	if (count_int(stack[0]) == 3)
+	if (stack_size(stack[0]) == 3)
 		stack[0] = three_numbers_case(stack[0]);
-	if (count_int(stack[0]) == 5)
+	if (stack_size(stack[0]) == 5)
 	{
 		five_numbers_case(stack);
 		while (i < 3)
@@ -32,7 +32,7 @@ void	special_cases(t_stack **stack)
 	}
 }
 
-t_stack *three_numbers_case(t_stack *stack)
+t_stack	*three_numbers_case(t_stack *stack)
 {
 	while ((stack->target != 1) || (stack->next->target != 2))
 	{

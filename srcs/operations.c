@@ -12,10 +12,10 @@
 
 #include "push_swap.h"
 
-t_stack *restore_pos(t_stack *stack)
+t_stack	*restore_pos(t_stack *stack)
 {
-	t_stack *current;
-	int	i;
+	t_stack	*current;
+	int		i;
 
 	i = 1;
 	current = stack;
@@ -28,9 +28,9 @@ t_stack *restore_pos(t_stack *stack)
 	return (stack);
 }
 
-t_stack *swap(t_stack *stack, char flag)
+t_stack	*swap(t_stack *stack, char flag)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	if (stack->next == NULL || stack == NULL)
 		return (NULL);
@@ -46,10 +46,10 @@ t_stack *swap(t_stack *stack, char flag)
 	return (stack);
 }
 
-t_stack *rotate(t_stack *stack, char flag)
+t_stack	*rotate(t_stack *stack, char flag)
 {
-	t_stack *last;
-	t_stack *temp;
+	t_stack	*last;
+	t_stack	*temp;
 
 	temp = stack;
 	last = stack;
@@ -70,10 +70,10 @@ t_stack *rotate(t_stack *stack, char flag)
 	return (stack);
 }
 
-t_stack *reverse_rotate(t_stack *stack, char flag)
+t_stack	*reverse_rotate(t_stack *stack, char flag)
 {
-	t_stack *last;
-	t_stack *temp;
+	t_stack	*last;
+	t_stack	*temp;
 
 	temp = stack;
 	last = stack;
@@ -89,7 +89,7 @@ t_stack *reverse_rotate(t_stack *stack, char flag)
 	temp->next = NULL;
 	last = restore_pos(last);
 	if (flag == 'a')
-		write(1,"rra\n", 4);
+		write(1, "rra\n", 4);
 	if (flag == 'b')
 		write(1, "rrb\n", 4);
 	return (last);
@@ -97,7 +97,7 @@ t_stack *reverse_rotate(t_stack *stack, char flag)
 
 void	push(t_stack **stack, char flag)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	if (flag == 'a' && stack[1] != NULL)
 	{
