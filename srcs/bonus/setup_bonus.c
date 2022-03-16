@@ -45,6 +45,19 @@ t_stack	*stack_insert(t_stack *stack, char const *nbr)
 	return (stack);
 }
 
+void	init_errorflag(t_stack *stack)
+{
+	t_stack *current;
+
+	current = stack;
+	while (current != NULL)
+	{
+		current->errorflag = 0;
+		current = current->next;
+	}
+	return ;
+}
+
 t_stack	*create_stack(t_stack *stack, int argc, char const **argv)
 {
 	int	i;
@@ -60,6 +73,7 @@ t_stack	*create_stack(t_stack *stack, int argc, char const **argv)
 			stack->pos = i;
 		}
 	}
+	init_errorflag(stack);
 	stack = find_target(stack);
 	return (stack);
 }
