@@ -62,7 +62,6 @@ void		freestack(t_stack **stack);
 // moves_bonus.c
 void		bonus_move(char*str, t_stack **stack, t_stack **A, t_stack **B);
 void		bonus_rev_rotater(char *s, t_stack **A, t_stack **B);
-void		bad_command_checker(char *s, t_stack **sA, t_stack **sB);
 void		checker(t_stack **stack);
 
 // operations_bonus.c

@@ -26,6 +26,7 @@ int	main(int argc, char const **argv)
 	stack[0] = NULL;
 	stack[1] = NULL;
 	stack[0] = create_stack(stack[0], argc, argv);
+	stack[1] = malloc(sizeof(*stack[1]));
 	while (get_next_line(fd, &line) == 1)
 	{
 		bonus_move(line, stack, &stack[0], &stack[1]);
