@@ -49,12 +49,7 @@ size_t		ft_strlen(const char *str);
 
 // check_args_bonus.c
 int			check_args(char const **argv);
-
-// find_target_bonus.c
-int			set_target_one(t_stack *stack);
-int			target_max(t_stack *stack);
-int			find_last_assigned_target(t_stack *stack, int max, int l_a);
-t_stack		*find_target(t_stack *stack);
+int			check_minus(char const **argv);
 
 // freestack_bonus.c
 void		freestack(t_stack **stack);
@@ -62,7 +57,8 @@ void		freestack(t_stack **stack);
 // moves_bonus.c
 void		bonus_move(char*str, t_stack **stack, t_stack **A, t_stack **B);
 void		bonus_rev_rotater(char *s, t_stack **A, t_stack **B);
-void		checker(t_stack **stack);
+void		bad_command_checker(char *s, t_stack **sA, t_stack **sB);
+void		checker(t_stack **stack, int size);
 
 // operations_bonus.c
 t_stack		*restore_pos(t_stack *stack);

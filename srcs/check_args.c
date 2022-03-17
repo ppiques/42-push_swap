@@ -26,6 +26,8 @@ static int	check_limits(char const **argv)
 		}
 		i++;
 	}
+	if (check_minus(argv) == -1)
+		return (-1);
 	return (0);
 }
 

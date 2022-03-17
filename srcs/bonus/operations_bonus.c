@@ -32,7 +32,7 @@ void	bonus_swap(t_stack **stack)
 {
 	t_stack	*temp;
 
-	if ((*stack)->next == NULL || stack == NULL)
+	if ((*stack)->next == NULL || (*stack) == NULL)
 		return ;
 	temp = (*stack)->next;
 	(*stack)->next = (*stack)->next->next;
@@ -47,6 +47,8 @@ void	bonus_rotate(t_stack **stack)
 	t_stack	*last;
 	t_stack	*temp;
 
+	if ((*stack) == NULL)
+		return ;
 	temp = *stack;
 	last = *stack;
 	if ((*stack)->next == NULL)
@@ -67,6 +69,8 @@ void	bonus_reverse_rotate(t_stack **stack)
 	t_stack	*last;
 	t_stack	*temp;
 
+	if ((*stack) == NULL)
+		return ;
 	temp = *stack;
 	last = *stack;
 	if ((*stack)->next == NULL)

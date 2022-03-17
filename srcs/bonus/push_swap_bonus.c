@@ -15,6 +15,7 @@
 int	main(int argc, char const **argv)
 {
 	int		fd;
+	int		size;
 	char	*line;
 	t_stack	*stack[2];
 
@@ -22,18 +23,18 @@ int	main(int argc, char const **argv)
 	if (argc <= 1)
 		return (-1);
 	if (check_args(argv) == -1)
-		return (0);
+		return (-1);
 	stack[0] = NULL;
 	stack[1] = NULL;
 	stack[0] = create_stack(stack[0], argc, argv);
-	stack[1] = malloc(sizeof(*stack[1]));
+	size = stack_size(stack[0]);
 	while (get_next_line(fd, &line) == 1)
 	{
 		bonus_move(line, stack, &stack[0], &stack[1]);
 		free(line);
 	}
 	free(line);
-	checker(stack);
+	checker(stack, size);
 	freestack(stack);
 	return (0);
 }

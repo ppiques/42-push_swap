@@ -32,16 +32,16 @@ vpath %.c $(SRCS_PATH)
 vpath %.c $(BONUS_PATH)
 
 SRCS = push_swap.c \
-check_args.c  find_target.c freestack.c \
+check_args.c check_minus.c find_target.c freestack.c \
 operations.c setup.c special_cases.c find_base.c \
 half_calculator.c moves.c sorting.c \
 ft_atoi.c ft_isdigit.c ft_strncmp.c
 
 SRCS_BONUS = push_swap_bonus.c \
-check_args_bonus.c find_target_bonus.c \
+check_args_bonus.c setup_bonus.c \
 freestack_bonus.c get_next_line.c \
 get_next_line_utils.c moves_bonus.c \
-operations_bonus.c setup_bonus.c utils_bonus.c
+operations_bonus.c utils_bonus.c
 
 
 CC =		gcc
@@ -76,7 +76,6 @@ fclean : clean
 	@echo "Executable removed\n"
 
 bonus :
-	@make all
 	@make $(CHECKER)
 
 $(CHECKER) : $(OBJS_BONUS)
@@ -91,6 +90,6 @@ $(BUILD_BONUS):
 	@echo "\nObject bonus directory created\n"
 	@echo "Compiling bonuses..\n"
 
-re : fclean all
+re : fclean all bonus
 
 .PHONY:		bonus all clean fclean re

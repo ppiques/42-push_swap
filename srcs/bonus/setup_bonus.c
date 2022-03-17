@@ -60,6 +60,5 @@ t_stack	*create_stack(t_stack *stack, int argc, char const **argv)
 			stack->pos = i;
 		}
 	}
-	stack = find_target(stack);
 	return (stack);
 }

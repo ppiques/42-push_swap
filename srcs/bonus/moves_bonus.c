@@ -46,7 +46,16 @@ void	bonus_rev_rotater(char *s, t_stack **sA, t_stack **sB)
 		bonus_reverse_rotate(sA);
 	else if (ft_strncmp(s, "rrb", 4) == 0)
 		bonus_reverse_rotate(sB);
-	else if (ft_strncmp(s, "rrr", 4) == 0)
+	else
+	{
+		bad_command_checker(s, sA, sB);
+	}
+	return ;
+}
+
+void	bad_command_checker(char *s, t_stack **sA, t_stack **sB)
+{
+	if (ft_strncmp(s, "rrr", 4) == 0)
 	{
 		bonus_reverse_rotate(sA);
 		bonus_reverse_rotate(sB);
@@ -55,10 +64,9 @@ void	bonus_rev_rotater(char *s, t_stack **sA, t_stack **sB)
 	{
 		sA[0]->errorflag = 1;
 	}
-	return ;
 }
 
-void	checker(t_stack **stack)
+void	checker(t_stack **stack, int size)
 {
 	t_stack	*current;
 
@@ -68,14 +76,14 @@ void	checker(t_stack **stack)
 		write(2, "Error\n", 6);
 		return ;
 	}
-	if (stack[1] != NULL && stack[1]->pos != 0)
+	if (stack_size(stack[0]) != size)
 	{
 		write(1, "KO\n", 3);
 		return ;
 	}
-	while (current != NULL)
+	while (current->next != NULL)
 	{
-		if (current->pos != current->target)
+		if (current->nbr > current->next->nbr)
 		{
 			write(1, "KO\n", 3);
 			current = stack[0];

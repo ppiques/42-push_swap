@@ -12,6 +12,45 @@
 
 #include "push_swap_bonus.h"
 
+static int	check_minus_in_arg(char const **argv, int i, int j)
+{
+	while (argv[i])
+	{
+		while (argv[i][j])
+		{
+			if (argv[i][j] == '-')
+			{
+				if (j != 0)
+				{
+					write(2, "Error\n", 6);
+					return (-1);
+				}
+				if (argv[i][j + 1] <= '0' || argv[i][j + 1] >= '9')
+				{
+					write(2, "Error\n", 6);
+					return (-1);
+				}
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	return (0);
+}
+
+int	check_minus(char const **argv)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	j = 0;
+	if (check_minus_in_arg(argv, i, j) == -1)
+		return (-1);
+	return (0);
+}
+
 static int	check_limits(char const **argv)
 {
 	int	i;
@@ -26,6 +65,8 @@ static int	check_limits(char const **argv)
 		}
 		i++;
 	}
+	if (check_minus(argv) == -1)
+		return (-1);
 	return (0);
 }
 
