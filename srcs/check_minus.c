@@ -6,13 +6,13 @@
 /*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:09:39 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/17 18:13:28 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/17 18:35:20 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_minus_in_arg(char const **argv, int i, int j)
+static int	check_minus_in_arg(char const **argv, int i, int j)
 {
 	while (argv[i])
 	{
@@ -25,7 +25,7 @@ int	check_minus_in_arg(char const **argv, int i, int j)
 					write(2, "Error\n", 6);
 					return (-1);
 				}
-				if (argv[i][j + 1] <= '0' || argv[i][j + 1] >= '9')
+				if (argv[i][j + 1] < '0' || argv[i][j + 1] > '9')
 				{
 					write(2, "Error\n", 6);
 					return (-1);

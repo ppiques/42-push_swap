@@ -25,7 +25,7 @@ static int	check_minus_in_arg(char const **argv, int i, int j)
 					write(2, "Error\n", 6);
 					return (-1);
 				}
-				if (argv[i][j + 1] <= '0' || argv[i][j + 1] >= '9')
+				if (argv[i][j + 1] < '0' || argv[i][j + 1] > '9')
 				{
 					write(2, "Error\n", 6);
 					return (-1);
