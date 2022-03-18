@@ -6,7 +6,7 @@
 /*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:24:53 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/10 16:26:19 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/18 18:18:20 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ long int	ft_atoi(const char *str)
 
 int	ft_isdigit(int c)
 {
-	if ((c >= '0' && c <= '9') || c == '-')
+	if ((c >= '0' && c <= '9') || c == '-' || c == '+')
 		return (1);
 	return (0);
 }

@@ -40,9 +40,15 @@ char	*get_save(char *save)
 	return (ret);
 }
 
-int	error_check(int fd, char *buff, char **line)
+int	error_check(int fd, char *buff, char **line, char *save)
 {
-	if (!line || fd < 0 || BUFFER_SIZE <= 0)
+	if (!line && save != NULL)
+	{
+		free(save);
+		free(buff);
+		return (-1);
+	}
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (-1);
 	if (!buff)
 		return (-1);
@@ -57,7 +63,7 @@ int	get_next_line(int fd, char **line)
 
 	nl = 1;
 	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (error_check(fd, buff, line) == -1)
+	if (error_check(fd, buff, line, save) == -1)
 		return (-1);
 	while (!newline_end(save) && nl != 0)
 	{

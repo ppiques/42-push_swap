@@ -38,7 +38,7 @@ typedef struct s_stack
 // get_next_line.c
 int			get_next_line(int fd, char **line);
 char		*get_save(char *save);
-int			error_check(int fd, char *buff, char **line);
+int			error_check(int fd, char *buff, char **line, char *save);
 
 //get_next_line_utils.c
 int			newline_end(char *str);
@@ -55,9 +55,9 @@ int			check_minus(char const **argv);
 void		freestack(t_stack **stack);
 
 // moves_bonus.c
-void		bonus_move(char*str, t_stack **stack, t_stack **A, t_stack **B);
-void		bonus_rev_rotater(char *s, t_stack **A, t_stack **B);
-void		bad_command_checker(char *s, t_stack **sA, t_stack **sB);
+int			bonus_move(char*str, t_stack **stack, t_stack **A, t_stack **B);
+int			bonus_rev_rotater(char *s, t_stack **A, t_stack **B);
+int			bad_command_checker(char *s, t_stack **sA, t_stack **sB);
 void		checker(t_stack **stack, int size);
 
 // operations_bonus.c

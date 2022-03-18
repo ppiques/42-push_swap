@@ -14,12 +14,10 @@
 
 int	main(int argc, char const **argv)
 {
-	int		fd;
 	int		size;
 	char	*line;
 	t_stack	*stack[2];
 
-	fd = 0;
 	if (argc <= 1)
 		return (-1);
 	if (check_args(argv) == -1)
@@ -28,9 +26,13 @@ int	main(int argc, char const **argv)
 	stack[1] = NULL;
 	stack[0] = create_stack(stack[0], argc, argv);
 	size = stack_size(stack[0]);
-	while (get_next_line(fd, &line) == 1)
+	while (get_next_line(0, &line) == 1)
 	{
-		bonus_move(line, stack, &stack[0], &stack[1]);
+		if (bonus_move(line, stack, &stack[0], &stack[1]) == -1)
+		{
+			(get_next_line(0, NULL));
+			break ;
+		}
 		free(line);
 	}
 	free(line);

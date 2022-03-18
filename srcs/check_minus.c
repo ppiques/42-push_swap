@@ -6,7 +6,7 @@
 /*   By: ppiques <ppiques@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:09:39 by ppiques           #+#    #+#             */
-/*   Updated: 2022/03/17 18:35:20 by ppiques          ###   ########.fr       */
+/*   Updated: 2022/03/18 18:18:08 by ppiques          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	check_minus_in_arg(char const **argv, int i, int j)
 	{
 		while (argv[i][j])
 		{
-			if (argv[i][j] == '-')
+			if (argv[i][j] == '-' || argv[i][j] == '+')
 			{
 				if (j != 0)
 				{

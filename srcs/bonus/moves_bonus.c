@@ -12,7 +12,7 @@
 
 #include "push_swap_bonus.h"
 
-void	bonus_move(char *str, t_stack **stack, t_stack **A, t_stack **B)
+int	bonus_move(char *str, t_stack **stack, t_stack **A, t_stack **B)
 {
 	if (ft_strncmp(str, "sa", 3) == 0)
 		bonus_swap(A);
@@ -36,11 +36,12 @@ void	bonus_move(char *str, t_stack **stack, t_stack **A, t_stack **B)
 		bonus_push(stack, 'a');
 	else if (ft_strncmp(str, "pb", 3) == 0)
 		bonus_push(stack, 'b');
-	else
-		bonus_rev_rotater(str, A, B);
+	else if (bonus_rev_rotater(str, A, B) == -1)
+		return (-1);
+	return (0);
 }
 
-void	bonus_rev_rotater(char *s, t_stack **sA, t_stack **sB)
+int	bonus_rev_rotater(char *s, t_stack **sA, t_stack **sB)
 {
 	if (ft_strncmp(s, "rra", 4) == 0)
 		bonus_reverse_rotate(sA);
@@ -48,12 +49,13 @@ void	bonus_rev_rotater(char *s, t_stack **sA, t_stack **sB)
 		bonus_reverse_rotate(sB);
 	else
 	{
-		bad_command_checker(s, sA, sB);
+		if (bad_command_checker(s, sA, sB) == -1)
+			return (-1);
 	}
-	return ;
+	return (0);
 }
 
-void	bad_command_checker(char *s, t_stack **sA, t_stack **sB)
+int	bad_command_checker(char *s, t_stack **sA, t_stack **sB)
 {
 	if (ft_strncmp(s, "rrr", 4) == 0)
 	{
@@ -63,7 +65,10 @@ void	bad_command_checker(char *s, t_stack **sA, t_stack **sB)
 	else
 	{
 		sA[0]->errorflag = 1;
+		write(2, "Error\n", 6);
+		return (-1);
 	}
+	return (0);
 }
 
 void	checker(t_stack **stack, int size)
@@ -72,10 +77,7 @@ void	checker(t_stack **stack, int size)
 
 	current = stack[0];
 	if (current->errorflag == 1)
-	{
-		write(2, "Error\n", 6);
 		return ;
-	}
 	if (stack_size(stack[0]) != size)
 	{
 		write(1, "KO\n", 3);
